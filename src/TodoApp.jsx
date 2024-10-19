@@ -29,7 +29,7 @@ export default function TodoApp() {
   }
 
   return (
-    <div className='bg-gradient-to-r from-blue-800 to-blue-950'>
+    <div className='bg-gradient-to-r from-blue-800 to-blue-950 overflow-hidden'>
       <div className='flex flex-col items-center h-screen'>
         <h1 className='text-7xl text-center mx-auto py-4 text-white'>Todo App</h1>
 
