@@ -1,9 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import TodoList from './TodoList';
 
-export default function App() {
-  const [todo, setTodo] = useState([]); // For the list of todos
-  const [newTodo, setNewTodo] = useState(''); // For the input value
+export default function TodoApp() {
+  const [todo, setTodo] = useState(() => {
+    // Load todos from local storage on initial render
+    const savedTodos = localStorage.getItem('todos');
+    return savedTodos ? JSON.parse(savedTodos) : [];
+  });
+  const [newTodo, setNewTodo] = useState('');
+
+  // Save todos to local storage whenever they change
+  useEffect(() => {
+    localStorage.setItem('todos', JSON.stringify(todo));
+  }, [todo]);
 
   // Function to handle adding the task
   function handleSetTodo() {
